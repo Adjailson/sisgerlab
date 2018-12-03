@@ -2,19 +2,25 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"/>
-  <link rel="shortcut icon" type="image/x-icon" href="http://localhost/sisgerlab/favicon.ico"/>
-  <meta name="description" content="Sobre o SisGerLab."/>
+  <link rel="shortcut icon" type="image/x-icon" href="<?php echo BASE_URL ?>favicon.ico"/>
+  <meta name="description" content="Sisgerlab - Sistema para gerenciar as reservas dos laboratórios solicitadas pelos professores."/>
   <meta name="Keywords" content="SisGerLab, sislerlab, lab"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   <meta id="viewport" name="viewport" content="width=device-width, user-scalable=no"/>
 
   <meta name="robots" content="index,follow"/>
-  <meta name="author" content="Sisgerlab."/>
+  <meta name="author" content="Sisgerlab"/>
 
-  <meta property="og:image" content="http://localhost/assets/img/sisgerlab.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="sisgerlab">
+  <meta property="og:image" content="<?php echo BASE_URL ?>assets/img/sisgerlab.jpg">
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="400"> 
-  <meta property="og:image:height" content="280">
+  <meta property="og:image:width" content="256"> 
+  <meta property="og:image:height" content="256">
+  <meta property="og:url" content="https://www.sisgerlab.tk/">
+  <meta property="og:title" content="Sisgerlab">
+  <meta property="og:description" content="Sisgerlab - Sistema para gerenciar as reservas dos laboratórios solicitadas pelos professores.">
 
   <title>Sisgerlab</title>
 
@@ -39,7 +45,7 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="reserva">Reserva <span class="sr-only"></span></a>
+        <a class="nav-link" href="reservas">Reservas <span class="sr-only"></span></a>
       </li>
 
       <li class="nav-item active">
@@ -65,12 +71,12 @@
 </div>
 
 <div class="container">
-<footer>
+<span class="d-block p-2 bg-dark text-white">
   <p>&copy;2018 <a href="/sisgerlab">Sisgerlab.</a> Todos os direitos reservados</p>
 
   <div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/"           title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"          title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 
-</footer>
+</span>
 </div>  
 
 <script type="text/javascript" src="<?php echo BASE_URL ?>assets/js/bootstrap.js"></script>
