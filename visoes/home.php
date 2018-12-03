@@ -1,4 +1,5 @@
-
+<div class="card">
+  <div class="card-header">
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -25,6 +26,22 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div>
+
+
+<div class="card">
+  <div class="card-header">
+    Sistema de reserva de laboratórios da UPE
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Bem vindos ao Sisgerlab</h5>
+    <p class="card-text">Sisgerlab - Sistema para gerenciar as reservas dos laboratórios solicitadas pelos professores.</p>
+    <a href="login" class="btn btn-primary btn-lg">Solicitar Acesso</a>
+  </div>
+</div>
+
+
+</div>
 </div>
 
 <script type="text/javascript" src="<?php echo BASE_URL ?>assets/js/jquery-3.1.1.min.js"></script>
