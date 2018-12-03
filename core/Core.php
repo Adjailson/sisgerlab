@@ -1,5 +1,12 @@
 <?php 
-/*clase core vai ser nosso motor de busca e urls amigaveis*/
+/* 
+A clase core vai ser nosso motor de busca e urls amigaveis
+no primeiro momento a variavel de pesquisa que declaramos
+no arquivo .htaccess. Em seguida passar esses valores para
+um array e definir por onde e de onde vai ser buscado a in-
+formação acessada se vem do (Modelo ou da Visão) tudo através
+do pacote Controle.
+*/
 class Core{
 
 	public function carregar(){

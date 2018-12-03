@@ -1,9 +1,14 @@
 <?php  
 require 'config.php';// vamos usar para conectar ao banco em todas as paginas
 
-//define("BASE_URL", "https://sisgerlab.tk/"); ativa somente quando estive no servido real
-define("BASE_URL", "http://localhost/sisgerlab/");
+//define("BASE_URL", "https://sisgerlab.tk/") //Usada no servidor web funcional
+define("BASE_URL", "http://localhost/sisgerlab/");// Usada para o servidor local desenvolvedor
 
+/*
+função para pegar o nome do arquivo nos devidos pacotes,
+distribui ou navega pelo mvc, em seguida pega o nome da
+classe necessária para carregar sobre o template.php 
+*/
 spl_autoload_register(function ($class){
 	if(strpos($class, 'Controle') > -1){
 		if(file_exists('controles/'.$class.'.php')){
@@ -15,8 +20,11 @@ spl_autoload_register(function ($class){
 		require_once 'core/'.$class.'.php';
 	}
 });
-
-$core = new core();
+/*
+Em seguida levar a url capatura para a classe Core
+fazer os filtros das urls amigaveis
+*/
+$core = new Core();
 $core->carregar();
 
 ?>
