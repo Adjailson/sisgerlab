@@ -52,8 +52,9 @@
 
     </ul>
 
-    <li class="form-inline my-2 my-lg-0">
+    <li class="form-outline my-2 my-lg-0">
       <a class="btn btn-outline-success my-2 my-sm-0" href="login">Login <span class="sr-only"></span></a>
+      <a class="btn btn-outline-success my-2 my-sm-0" href="cadastro">Cadastro <span class="sr-only"></span></a>
     </li>
   </div>
 </nav>
