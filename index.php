@@ -1,7 +1,7 @@
 <?php  
 require 'config.php';// vamos usar para conectar ao banco em todas as paginas
 
-//define("BASE_URL", "https://sisgerlab.tk/") //Usada no servidor web funcional
+//define("BASE_URL", "https://www.sisgerlab.tk/"); //Usada no servidor web funcional
 define("BASE_URL", "http://localhost/sisgerlab/");// Usada para o servidor local desenvolvedor
 
 /*

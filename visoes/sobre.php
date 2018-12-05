@@ -12,17 +12,17 @@
 <div class="card">
   <div class="card-header">
   <ul class="list-group">
-  		<li class="list-group-item disabled">Endereço</li>
+  		<li class="list-group-item disabled alert-link">Endereço</li>
   		<li class="list-group-item">R. Cap. Pedro Rodrigues - São José, Garanhuns - PE, 55294-XXX</li>
   </ul>
 
   <ul class="list-group">
-  		<li class="list-group-item disabled">Fone</li>
+  		<li class="list-group-item disabled alert-link">Fone</li>
   		<li class="list-group-item"> (87) 3761-XXXX</li>
   </ul>
 
   <ul class="list-group">
-  		<li class="list-group-item disabled">E-mail</li>
+  		<li class="list-group-item disabled alert-link">E-mail</li>
   		<li class="list-group-item">sisgerlabupe@gmail.com</li>
   </ul>
 </div>

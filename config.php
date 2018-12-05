@@ -1,20 +1,20 @@
 <?php
 require 'environment.php';
 
-global $config;
-$config = array();
-if(VAR_GLOBAL == "desenvolvedor"){
+global $dados_db;
+$dados_db = array();
+if(ACESSO_DB == "desenvolvedor"){
 	// Dados do meu servidor local:
-	$config['dbname'] = 'tecjr';
-	$config['host'] = 'localhost';
-	$config['dbuser'] = 'root';
-	$config['dbpass'] = '1234';
+	$dados_db['dbnome'] = 'sisgerlab';
+	$dados_db['dbhost'] = 'localhost';
+	$dados_db['dbuser'] = 'root';
+	$dados_db['dbsenha'] = '1234';
 }else{
 	// Dados do servidor externo:
-	$config['dbname'] = 'u850975184_sisgerlab';
-	$config['host'] = 'localhost';
-	$config['dbuser'] = 'u850975184_sisgerlab';
-	$config['dbpass'] = 'sisgerlab';
+	$dados_db['dbnome'] = 'u850975184_sisgerlab';
+	$dados_db['dbhost'] = 'localhost';
+	$dados_db['dbuser'] = 'u850975184_sisgerlab';
+	$dados_db['dbsenha'] = 'sisgerlab';
 }
 
 ?>

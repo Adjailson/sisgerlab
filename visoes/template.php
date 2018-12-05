@@ -73,7 +73,7 @@
 
 <div class="container">
 <span class="d-block p-2 bg-dark text-white">
-  <p>&copy;2018 <a href="/sisgerlab">Sisgerlab.</a> Todos os direitos reservados</p>
+  <p>&copy;2018 <a href="<?php echo BASE_URL ?>">Sisgerlab.</a> Todos os direitos reservados</p>
 
   <div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/"           title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"          title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 

@@ -1,3 +1,3 @@
 <?php
-	define("VAR_GLOBAL", "desenvolvedor");
+	define("ACESSO_DB", "desenvolvedor");
 ?>
