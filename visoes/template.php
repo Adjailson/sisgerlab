@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8"/>
   <link rel="shortcut icon" type="image/x-icon" href="<?php echo BASE_URL ?>favicon.ico"/>
@@ -24,9 +24,11 @@
 
   <title>Sisgerlab</title>
 
-  <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>assets/css/sisgerlab.css"/>
   <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>assets/css/bootstrap.css">
-
+  
+  <script type="text/javascript" src="<?php echo BASE_URL ?>assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo BASE_URL ?>assets/js/bootstrap.js"></script>
+  
 </head>
 <body>
 
@@ -45,7 +47,7 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="reservas">Reservas <span class="sr-only"></span></a>
+        <a class="nav-link" href="calendario">Reservas <span class="sr-only"></span></a>
       </li>
 
       <li class="nav-item active">
@@ -59,8 +61,9 @@
     </ul>
 
     <li class="form-outline my-2 my-lg-0">
-      <a class="btn btn-outline-success my-2 my-sm-0" href="login">Login <span class="sr-only"></span></a>
-      <a class="btn btn-outline-success my-2 my-sm-0" href="cadastro">Cadastro <span class="sr-only"></span></a>
+      <?php
+        echo Utilidades::menuConfig();
+      ?>
     </li>
   </div>
 </nav>
@@ -79,9 +82,6 @@
 
 </span>
 </div>  
-
-<script type="text/javascript" src="<?php echo BASE_URL ?>assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="<?php echo BASE_URL ?>assets/js/bootstrap.js"></script>
 
 </body>
 </html>

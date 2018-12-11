@@ -1,3 +1,4 @@
+
 <div class="card">
   <div class="card-header">
 
@@ -36,7 +37,10 @@
   <div class="card-body">
     <h5 class="card-title">Bem vindos ao Sisgerlab</h5>
     <p class="card-text">Sisgerlab - Sistema para gerenciar as reservas dos laboratórios solicitadas pelos professores.</p>
-    <a href="cadastro" class="btn btn-primary btn-lg">Solicitar Acesso</a>
+
+    <?php
+        echo Utilidades::btConfig();
+    ?>
   </div>
 </div>
 

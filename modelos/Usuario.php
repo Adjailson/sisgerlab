@@ -1,21 +1,16 @@
 <?php
-
-class Funcionario extends Conexao{
+/*
+classe responsavel para cadastrar diversos usuarios no sistema como:
+administrador, coordenador e professor.
+*/
+class Usuario extends Conexao{
 	// Declaração dos atributos:
 	private $cpf;
 	private $nome;
 	private $email;
 	private $senha;
 	private $funcao;
-
-	// Método 2: usando o proprio nome da classe
-    public function Funcionario($cpf, $nome, $email, $senha, $funcao) {
-	    $this->setCpf($cpf);
-	    $this->setNome($nome);
-	    $this->setEmail($email);
-	    $this->setSenha($senha);
-	    $this->setFuncao($funcao);
-    }
+	private $situacao;
 
 	// Implementação dos GETs e SETs:
 	public function setCpf($cpf){
@@ -51,11 +46,17 @@ class Funcionario extends Conexao{
 	public function getFuncao(){
 		return $this->funcao;
 	}
+	public function setSituacao($situacao){
+		$this->situacao = $situacao;
+	}
+	public function getSituacao(){
+		return $this->situacao;
+	}
 
 	// Implementação das funções CRUD:
 	public function cadastrar(){
 		try{
-			$sql = "INSERT INTO funcionario(cpf,nome,email,senha,funcao) VALUES(:cpf,:nome,:email,:senha,:funcao)";
+			$sql = "INSERT INTO usuario(cpf,nome,email,senha,funcao,situacao) VALUES(:cpf,:nome,:email,:senha,:funcao,:situacao)";
 			$prep = Conexao::getInstance()->prepare($sql);
 	 
 	        $prep->bindValue(":cpf", $this->getCpf());
@@ -63,6 +64,7 @@ class Funcionario extends Conexao{
 	        $prep->bindValue(":email", $this->getEmail());
 	        $prep->bindValue(":senha", $this->getSenha());
 	        $prep->bindValue(":funcao", $this->getFuncao());
+	        $prep->bindValue(":situacao", $this->getSituacao());
 	 		$prep->execute();
 	 		echo "".Utilidades::mensagemOK();
 	 		exit();
@@ -74,7 +76,7 @@ class Funcionario extends Conexao{
 
 	public function editar() {
         try {
-            $sql = "UPDATE funcionario set nome = :nome, email = :email, senha = :senha, funcao =:funcao WHERE cpf = :cpf";
+            $sql = "UPDATE usuario set nome = :nome, email = :email, senha = :senha, funcao =:funcao, situacao = :situacao WHERE cpf = :cpf";
  
             $prep = Conexao::getInstance()->prepare($sql);
  
@@ -82,6 +84,7 @@ class Funcionario extends Conexao{
             $prep->bindValue(":email", $this->getEmail());
             $prep->bindValue(":senha", $this->getSenha());
             $prep->bindValue(":funcao", $this->getFuncao());
+            $prep->bindValue(":situacao", $this->getSituacao());
             $prep->bindValue(":cpf", $this->getCpf());
             $prep->execute();
             echo "".Utilidades::mensagemOK();
@@ -94,7 +97,7 @@ class Funcionario extends Conexao{
 
 	public function excluir($chave){
 		try {
-            $sql = "DELETE FROM funcionario WHERE cpf= :cpf";
+            $sql = "DELETE FROM usuario WHERE cpf= :cpf";
             $prep = Conexao::getInstance()->prepare($sql);
             $prep->bindValue(":cpf", $chave);
             $prep->execute();
@@ -106,29 +109,27 @@ class Funcionario extends Conexao{
         }
 	}
 
-	// busca funcionario por cpf já existente:
-	public function buscarCpf($cpf) {
-        try {
-            $sql = "SELECT * FROM funcionario WHERE cpf = :cpf";
-            $prep = Conexao::getInstance()->prepare($sql);
-            $prep->bindValue(":cpf", $cpf);
-            $prep->execute();
-            $coluna = $prep->fetch(PDO::FETCH_ASSOC); 
-            return $coluna['cpf'];
-        } catch (Exception $erro) {
-        }
-    }
-
 	public function listar(){
 		try {
 			$dados = array();
-			$sql = "SELECT * FROM funcionario";
+			$sql = "SELECT * FROM usuario";
             $prep = Conexao::getInstance()->prepare($sql);
             $prep->execute();
-            $prep->fetch(PDO::FETCH_ASSOC);
-            if($prep->rowCount() > 0){
-            	$dados = $prep->fetchAll();
-            }
+            $dados = $prep->fetchAll(PDO::FETCH_ASSOC);
+            return $dados;
+        } catch (Exception $erro) {
+        }
+	}
+
+	public function login($email, $senha){
+		try {
+			$dados = array();
+			$sql = "SELECT nome,funcao,situacao FROM usuario WHERE email=:email AND senha=:senha";
+            $prep = Conexao::getInstance()->prepare($sql);
+            $prep->bindValue(":email", $email);
+            $prep->bindValue(":senha", $senha);
+            $prep->execute();
+            $dados = $prep->fetch(PDO::FETCH_ASSOC);
             return $dados;
         } catch (Exception $erro) {
         }

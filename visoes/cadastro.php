@@ -1,4 +1,8 @@
 <?php
+
+  $func = new Funcao();
+  $dados = array();
+  $dados = $func->listar();// usar no select option do cadastro
   /*
   Verificar os campos e armazenar os valores;
   */
@@ -23,7 +27,13 @@
     */
     if($txtSenha1 == $txtSenha2){
       if($txtOpcao != "0"){
-        $func = new Funcionario($txtCpf, $txtNome." ".$txtSobrenome, $txtEmail, $txtSenha1, $txtOpcao);
+        $func = new Usuario($txtCpf, $txtNome." ".$txtSobrenome, $txtEmail, $txtSenha1, $txtOpcao);
+        $func->setCpf($txtCpf);
+        $func->setNome($txtNome." ".$txtSobrenome);
+        $func->setEmail($txtEmail);
+        $func->setSenha($txtSenha1);
+        $func->setFuncao($txtOpcao);
+        $func->setSituacao("off"); // valor padrão temporario desativo
         $func->cadastrar();
       }else{
         echo "".Utilidades::mensagemErro("Selecione sua função!");
@@ -46,10 +56,12 @@
   <label class="my-1 mr-2 alert-link" for="inlineFormCustomSelectPref">Sua função</label>
   <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="txtOpcao">
     <option selected value="0">Selecione</option>
-    <option value="Coordenador">Coordenador</option>
-    <option value="Professor">Professor</option>
+      <?php
+      foreach($dados as $row){
+        echo "<option value=".$row['id'].">".$row['funcao']."</option>";
+      }
+      ?>
   </select>
-
 
   <div class="form-row">
     <div class="col">
