@@ -23,6 +23,7 @@ if (isset($_POST['txtEmail']) && !empty($_POST['txtEmail']) && isset($_POST['txt
       // Guarda na sessao nome e a funcao desse usuário
       $_SESSION["nome"] = $nome;
       $_SESSION['tipo'] = $tipo;
+      $_SESSION['id'] = $dados['id'];
       header("Location: home");
     } else {
       echo "".Utilidades::mensagemErro("Acesso não confirmado!");

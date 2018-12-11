@@ -124,7 +124,7 @@ class Usuario extends Conexao{
 	public function login($email, $senha){
 		try {
 			$dados = array();
-			$sql = "SELECT nome,funcao,situacao FROM usuario WHERE email=:email AND senha=:senha";
+			$sql = "SELECT id,nome,funcao,situacao FROM usuario WHERE email=:email AND senha=:senha";
             $prep = Conexao::getInstance()->prepare($sql);
             $prep->bindValue(":email", $email);
             $prep->bindValue(":senha", $senha);

@@ -182,14 +182,16 @@
         <form class="form-horizontal" method="POST" action="calendario">
           
           <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
             <div class="col-sm-10">
               <!--Pegar nome do usuário da sessão-->
               <?php
-               echo "<input class='form-control' name='txtProf' type='text' value='" .$_SESSION['nome']."' readonly>";
+              echo "<h5> <spam>" .$_SESSION['nome']."</spam></h5>id";
+               echo "<input class='form-control' name='txtProf' type='text' value='" .$_SESSION['id']."' readonly>";
               ?>
             </div>
           </div>
+
+          <hr>
 
           <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Laboratórios</label>
