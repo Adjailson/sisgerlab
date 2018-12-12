@@ -57,17 +57,16 @@ class Reserva extends Conexao{
         }
 	}
 
-	public function editar() {
+	public function editar($id) {
         try {
-            $sql = "UPDATE reserva set status = :status WHERE data = :data";
+            $sql = "UPDATE reserva set status = :status WHERE id = :id";
  
             $prep = Conexao::getInstance()->prepare($sql);
  
             $prep->bindValue(":status", $this->getStatus());
-            $prep->bindValue(":data", $this->getData());
+            $prep->bindValue(":id", $id);
             $prep->execute();
-            echo "".Utilidades::mensagemOK();
-	 		exit();
+            
         } catch (Exception $erro) {
         	echo "".Utilidades::mensagemErro("Erro técnico.");
 	 		exit();
@@ -100,6 +99,38 @@ class Reserva extends Conexao{
         } catch (Exception $erro) {
         }
     }
+
+    public function getStatu($id){
+		try {
+			$status = "Pendente";
+			$result = array();
+			$sql = "SELECT * FROM reserva WHERE id = $id";
+            $prep = Conexao::getInstance()->prepare($sql);
+            $prep->execute();
+            $result = $prep->fetch(PDO::FETCH_ASSOC);
+            if ($result['status'] == "#daa520") {
+            	$status = "Pendente";
+            } elseif($result['status'] == "#228b22") {
+            	$status = "Aprovado";
+            } else{
+            	$status = "Cancelada";
+            }
+            return $status;
+        } catch (Exception $erro) {
+        }
+	}
+
+	public function listarReservaProf($usuario){
+		try {
+			$result = array();
+			$sql = "SELECT * FROM reserva WHERE professor = (SELECT id FROM funcao WHERE funcao = '$usuario')";
+            $prep = Conexao::getInstance()->prepare($sql);
+            $prep->execute();
+            $result = $prep->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (Exception $erro) {
+        }
+	}
 
 	public function listar(){
 		try {

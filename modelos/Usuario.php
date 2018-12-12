@@ -74,21 +74,19 @@ class Usuario extends Conexao{
         }
 	}
 
-	public function editar() {
+	public function editar($id) {
         try {
-            $sql = "UPDATE usuario set nome = :nome, email = :email, senha = :senha, funcao =:funcao, situacao = :situacao WHERE cpf = :cpf";
+            $sql = "UPDATE usuario set nome = :nome, email = :email, funcao =:funcao, situacao = :situacao WHERE id = :id";
  
             $prep = Conexao::getInstance()->prepare($sql);
  
             $prep->bindValue(":nome", $this->getNome());
             $prep->bindValue(":email", $this->getEmail());
-            $prep->bindValue(":senha", $this->getSenha());
             $prep->bindValue(":funcao", $this->getFuncao());
             $prep->bindValue(":situacao", $this->getSituacao());
-            $prep->bindValue(":cpf", $this->getCpf());
+            $prep->bindValue(":id", $id);
             $prep->execute();
-            echo "".Utilidades::mensagemOK();
-	 		exit();
+            
         } catch (Exception $erro) {
         	echo "".Utilidades::mensagemErro("Erro técnico.");
 	 		exit();
@@ -97,12 +95,10 @@ class Usuario extends Conexao{
 
 	public function excluir($chave){
 		try {
-            $sql = "DELETE FROM usuario WHERE cpf= :cpf";
+            $sql = "DELETE FROM usuario WHERE id= :id";
             $prep = Conexao::getInstance()->prepare($sql);
-            $prep->bindValue(":cpf", $chave);
+            $prep->bindValue(":id", $chave);
             $prep->execute();
-            echo "".Utilidades::mensagemOK();
-	 		exit();
         } catch (Exception $erro) {
         	echo "".Utilidades::mensagemErro("Erro técnico.");
 	 		exit();
@@ -117,6 +113,30 @@ class Usuario extends Conexao{
             $prep->execute();
             $dados = $prep->fetchAll(PDO::FETCH_ASSOC);
             return $dados;
+        } catch (Exception $erro) {
+        }
+	}
+
+	public function listarId($id){
+		try {
+			$dados = array();
+			$sql = "SELECT * FROM usuario WHERE id = $id";
+            $prep = Conexao::getInstance()->prepare($sql);
+            $prep->execute();
+            $dados = $prep->fetch(PDO::FETCH_ASSOC);
+            return $dados;
+        } catch (Exception $erro) {
+        }
+	}
+
+	public function getUsu($id){
+		try {
+			$dados = array();
+			$sql = "SELECT * FROM usuario WHERE id = $id";
+            $prep = Conexao::getInstance()->prepare($sql);
+            $prep->execute();
+            $dados = $prep->fetch(PDO::FETCH_ASSOC);
+            return $dados['nome'];
         } catch (Exception $erro) {
         }
 	}

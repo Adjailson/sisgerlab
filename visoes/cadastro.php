@@ -27,7 +27,7 @@
     */
     if($txtSenha1 == $txtSenha2){
       if($txtOpcao != "0"){
-        $func = new Usuario($txtCpf, $txtNome." ".$txtSobrenome, $txtEmail, $txtSenha1, $txtOpcao);
+        $func = new Usuario();
         $func->setCpf($txtCpf);
         $func->setNome($txtNome." ".$txtSobrenome);
         $func->setEmail($txtEmail);
@@ -55,9 +55,7 @@
 
   <label class="my-1 mr-2 alert-link" for="inlineFormCustomSelectPref">Sua função</label>
   <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="txtOpcao">
-    <option selected value="0">Adm</option>
-    <option selected value="0">Coordenador</option>
-    <option selected value="0">Professor</option>
+    <option selected value="0">Selecione</option>
       <?php
       foreach($dados as $row){
         echo "<option value=".$row['id'].">".$row['funcao']."</option>";

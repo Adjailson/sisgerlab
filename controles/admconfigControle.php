@@ -6,5 +6,6 @@ class admconfigControle extends Controle {
 		$dados = array();
 		$this->loadTemplate("admconfig", $dados);
 	}
+
 }
 ?>

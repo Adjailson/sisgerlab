@@ -1,5 +1,5 @@
 <?php
-//session_start();
+
 $_SESSION = array();
 // Se é preciso matar a sessão, então os cookies de sessão também devem ser apagados.
 // Nota: Isto destruirá a sessão, e não apenas os dados!
