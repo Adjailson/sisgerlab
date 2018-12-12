@@ -10,10 +10,9 @@ if (isset($_POST['txtEmail']) && !empty($_POST['txtEmail']) && isset($_POST['txt
 
   $usu = new Usuario();
   $dados = array();
-  $func = new Funcao();
   
   $dados = $usu->login($email, $senha);
-  $tipo = $func->getFun($dados['funcao']);
+  $tipo = $dados['funcao'];
   $nome = $dados['nome'];
   $situacao = $dados['situacao'];
 

@@ -6,6 +6,7 @@ classe responsavel para cadastrar os laboratorios
 class Laboratorio extends Conexao{
 	// Declaração dos atributos:
 	private $nome;
+	private $local;
 
 	// Implementação dos GETs e SETs:
 	public function setNome($nome){
@@ -15,19 +16,67 @@ class Laboratorio extends Conexao{
 		return $this->nome;
 	}
 
+	public function setLocal($local){
+		$this->local = $local;
+	}
+	public function getLocal(){
+		return $this->local;
+	}
+
 	// Implementação das funções CRUD:
 	public function cadastrar(){
 		try{
-			$sql = "INSERT INTO laboratorio (nome) VALUES(:nome)";
+			$sql = "INSERT INTO laboratorio (nome, local) VALUES(:nome,:local)";
 			$prep = Conexao::getInstance()->prepare($sql);
-	 
 	        $prep->bindValue(":nome", $this->getNome());
+	        $prep->bindValue(":local", $this->getLocal());
 	 		$prep->execute();
-	 		echo "".Utilidades::mensagemOK();
-	 		exit();
+	 		echo "".Utilidades::mensagemOK("Salvo!");
         } catch (Exception $erro) {
-        	echo "".Utilidades::mensagemErro("Erro técnico.");
+        	echo "".Utilidades::mensagemErro("Verifique se já existe esse laboratório!");
 	 		exit();
+        }
+	}
+
+	public function editar($id) {
+        try {
+            $sql = "UPDATE laboratorio set nome = :nome, local = :local WHERE id = :id";
+ 
+            $prep = Conexao::getInstance()->prepare($sql);
+ 
+            $prep->bindValue(":nome", $this->getNome());
+            $prep->bindValue(":local", $this->getLocal());
+            $prep->bindValue(":id", $id);
+            $prep->execute();
+            
+        } catch (Exception $erro) {
+        	echo "".Utilidades::mensagemErro("Lab existe pendência em reservas!");
+	 		exit();
+        }
+    }
+
+    public function excluir($id){
+		try {
+            $sql = "DELETE FROM laboratorio WHERE id= :id";
+            $prep = Conexao::getInstance()->prepare($sql);
+            $prep->bindValue(":id", $id);
+            $prep->execute();
+        } catch (Exception $erro) {
+        	echo "".Utilidades::mensagemErro("Lab existe pendência em reservas!");
+	 		exit();
+        }
+	}
+
+	public function listarId($id){
+		try {
+			$result = array();
+			$sql = "SELECT * FROM laboratorio WHERE id = :id";
+            $prep = Conexao::getInstance()->prepare($sql);
+            $prep->bindValue(":id", $id);
+            $prep->execute();
+            $result = $prep->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (Exception $erro) {
         }
 	}
 

@@ -1,8 +1,4 @@
 <?php
-
-  $func = new Funcao();
-  $dados = array();
-  $dados = $func->listar();// usar no select option do cadastro
   /*
   Verificar os campos e armazenar os valores;
   */
@@ -56,11 +52,9 @@
   <label class="my-1 mr-2 alert-link" for="inlineFormCustomSelectPref">Sua função</label>
   <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="txtOpcao">
     <option selected value="0">Selecione</option>
-      <?php
-      foreach($dados as $row){
-        echo "<option value=".$row['id'].">".$row['funcao']."</option>";
-      }
-      ?>
+    <option value="Administrador">Administrador</option>
+    <option value="Coordenador">Coordenador</option>
+    <option value="Professor">Professor</option>
   </select>
 
   <div class="form-row">

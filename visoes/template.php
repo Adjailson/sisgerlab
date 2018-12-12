@@ -62,13 +62,7 @@
 
     <li class="form-outline my-2 my-lg-0">
       <?php
-        echo Utilidades::menuPersonalisado();
-      ?>
-    </li>
-
-    <li class="form-outline my-2 my-lg-0">
-      <?php
-        echo Utilidades::menuConfig();
+        Utilidades::menuPersonalisado();
       ?>
     </li>
   </div>

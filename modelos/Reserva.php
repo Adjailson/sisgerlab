@@ -49,10 +49,10 @@ class Reserva extends Conexao{
 	        $prep->bindValue(":professor", $this->getProf());
 	        $prep->bindValue(":status", $this->getStatus());
 	 		$prep->execute();
-	 		echo "".Utilidades::mensagemOK();
+	 		echo "".Utilidades::mensagemOK("Salvo!");
 	 		exit();
         } catch (Exception $erro) {
-        	echo "".Utilidades::mensagemErro("Erro técnico.");
+        	echo "".Utilidades::mensagemErro("Reserva já existente!");
 	 		exit();
         }
 	}
@@ -79,8 +79,7 @@ class Reserva extends Conexao{
             $prep = Conexao::getInstance()->prepare($sql);
             $prep->bindValue(":data", $chave);
             $prep->execute();
-            echo "".Utilidades::mensagemOK();
-	 		exit();
+            
         } catch (Exception $erro) {
         	echo "".Utilidades::mensagemErro("Erro técnico.");
 	 		exit();

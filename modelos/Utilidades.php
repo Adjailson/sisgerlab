@@ -8,9 +8,9 @@ class Utilidades {
 		# code...
 	}
 
-	public static function mensagemOk() {
+	public static function mensagemOk($msn) {
         $dados = "";
-        $dados = "<div class='alert alert-success'> <h4>Sucesso!</h4> <a href='calendario' class='btn btn-success'>Ok</a> </div>";
+        $dados = "<div class='alert alert-success'> <h4>".$msn."</h4> <a href='JavaScript: window.history.back();' class='btn btn-success'>Voltar</a> </div>";
         return $dados;
     }
 
@@ -30,23 +30,35 @@ class Utilidades {
 
     public static function menuPersonalisado(){
         if ($_SESSION['tipo'] == "Coordenador") {
-            echo "<a class='btn btn-outline-success my-2 my-sm-0' href='coorconfig'>Gerir Reservas <span class='sr-only'></span></a>";
+            echo "<div class='btn-group'>
+                <button class='btn btn-secondary btn-lg dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                  Menu
+                </button>
+                <div class='dropdown-menu'>
+                  <a class='dropdown-item' href='coorconfig'>Reservas</a>
+                  <a class='dropdown-item' href='minhasreservas'>Minhas reservas</a>
+                  <div class='dropdown-divider'></div>
+                  <a class='dropdown-item' href='sair'>Sair</a>
+                </div>
+              </div>";
         } elseif ($_SESSION['tipo'] == "Administrador") {
-            echo "<a class='btn btn-outline-success my-2 my-sm-0' href='admconfig'>Configurações <span class='sr-only'></span></a>";
-            echo "<a class='btn btn-outline-success my-2 my-sm-0' href='coorconfig'>Gerir Reservas <span class='sr-only'></span></a>";
-        }
-        
-    }
-
-    public static function menuConfig(){
-        if (!empty($_SESSION['nome']) && !empty($_SESSION['tipo'])) {
-            return "<a class='btn btn-outline-success my-2 my-sm-0' href='minhasreservas'>My Reservas<span class='sr-only'></span></a>
-            <a class='btn btn-outline-success my-2 my-sm-0' href='home'>".$_SESSION['nome']."<span class='sr-only'></span></a>
-            <a class='btn btn-outline-success my-2 my-sm-0' href='sair'>Sair <span class='sr-only'></span></a>";
-        } else {
-            return "<a class='btn btn-outline-success my-2 my-sm-0' href='login'>Login <span class='sr-only'></span></a>
+            echo "<div class='btn-group'>
+                <button class='btn btn-secondary btn-lg dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                  Menu
+                </button>
+                <div class='dropdown-menu'>
+                  <a class='dropdown-item' href='admconfig'>Cadastros</a>
+                  <a class='dropdown-item' href='coorconfig'>Reservas</a>
+                  <a class='dropdown-item' href='minhasreservas'>Minhas reservas</a>
+                  <div class='dropdown-divider'></div>
+                  <a class='dropdown-item' href='sair'>Sair</a>
+                </div>
+              </div>";
+        } elseif (empty($_SESSION['nome']) && empty($_SESSION['tipo'])){
+            echo "<a class='btn btn-outline-success my-2 my-sm-0' href='login'>Login <span class='sr-only'></span></a>
             <a class='btn btn-outline-success my-2 my-sm-0' href='cadastro'>Cadastro <span class='sr-only'></span></a>";
         }
+        
     }
 
     public static function btConfig(){

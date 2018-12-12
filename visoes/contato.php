@@ -6,7 +6,7 @@
 <form>
   <div class="form-group">
     <label for="exampleFormControlInput1" class="alert-link">Nome</label>
-    <input type="text" class="form-control" placeholder="Fulano Tal" autofocus>
+    <input type="text" class="form-control" autofocus>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput2" class="alert-link">Email</label>

@@ -87,7 +87,7 @@
             ?>
             {
             id: '<?php echo $row['id']; ?>',
-            title: '<?php echo $lab->getLab($row['laboratorio']); ?>',
+            title: '<?php echo $row['laboratorio']; ?>',
             start: '<?php echo $row['data']; ?>',
             color: '<?php echo $row['status']; ?>'
             },<?php
@@ -219,6 +219,17 @@
                 <option value="09:00" id="hora">09:00 às 10:00 Manhã</option>
                 <option value="10:00" id="hora">10:00 às 11:00 Manhã</option>
                 <option value="11:00" id="hora">11:00 às 12:00 Manhã</option>
+
+                <option value="12:00" id="hora">13:00 às 14:00 Tarde</option>
+                <option value="14:00" id="hora">14:00 às 15:00 Tarde</option>
+                <option value="15:00" id="hora">15:00 às 16:00 Tarde</option>
+                <option value="16:00" id="hora">17:00 às 18:00 Tarde</option>
+
+                <option value="17:00" id="hora">18:00 às 17:00 Noite</option>
+                <option value="18:00" id="hora">17:00 às 19:00 Noite</option>
+                <option value="19:00" id="hora">20:00 às 21:00 Noite</option>
+                <option value="20:00" id="hora">21:00 às 22:00 Noite</option>
+                
               </select>
             </div>
           </div>

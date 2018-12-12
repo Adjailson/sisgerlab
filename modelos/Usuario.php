@@ -66,7 +66,7 @@ class Usuario extends Conexao{
 	        $prep->bindValue(":funcao", $this->getFuncao());
 	        $prep->bindValue(":situacao", $this->getSituacao());
 	 		$prep->execute();
-	 		echo "".Utilidades::mensagemOK();
+	 		echo "".Utilidades::mensagemOK("Salvo!");
 	 		exit();
         } catch (Exception $erro) {
         	echo "".Utilidades::mensagemErro("Erro técnico.");
@@ -88,7 +88,7 @@ class Usuario extends Conexao{
             $prep->execute();
             
         } catch (Exception $erro) {
-        	echo "".Utilidades::mensagemErro("Erro técnico.");
+        	echo "".Utilidades::mensagemErro("Usuário pode ter pendência com reserva!");
 	 		exit();
         }
     }
@@ -100,7 +100,7 @@ class Usuario extends Conexao{
             $prep->bindValue(":id", $chave);
             $prep->execute();
         } catch (Exception $erro) {
-        	echo "".Utilidades::mensagemErro("Erro técnico.");
+        	echo "".Utilidades::mensagemErro("Usuário pode ter pendência com reserva!");
 	 		exit();
         }
 	}
