@@ -122,7 +122,7 @@ class Reserva extends Conexao{
 	public function listarReservaProf($usuario){
 		try {
 			$result = array();
-			$sql = "SELECT * FROM reserva WHERE professor = (SELECT id FROM funcao WHERE funcao = '$usuario')";
+			$sql = "SELECT * FROM reserva WHERE professor = '$usuario'";
             $prep = Conexao::getInstance()->prepare($sql);
             $prep->execute();
             $result = $prep->fetchAll(PDO::FETCH_ASSOC);

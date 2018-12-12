@@ -87,7 +87,7 @@
             ?>
             {
             id: '<?php echo $row['id']; ?>',
-            title: '<?php echo $row['laboratorio']; ?>',
+            title: '<?php echo $lab->getLab($row['laboratorio']); ?>',
             start: '<?php echo $row['data']; ?>',
             color: '<?php echo $row['status']; ?>'
             },<?php
@@ -186,7 +186,7 @@
               <!--Pegar nome do usuário da sessão-->
               <?php
               echo "<h5> <spam>" .$_SESSION['nome']."</spam></h5>id";
-               echo "<input class='form-control' name='txtProf' type='text' value='" .$_SESSION['id']."' readonly>";
+               echo "<input class='form-control' name='txtProf' type='text' value='" .$_SESSION['nome']."' readonly>";
               ?>
             </div>
           </div>
