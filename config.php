@@ -11,10 +11,10 @@ if(ACESSO_DB == "desenvolvedor"){
 	$dados_db['dbsenha'] = '1234';
 }else{
 	// Dados do servidor externo:
-	$dados_db['dbnome'] = 'u850975184_sisgerlab';
+	$dados_db['dbnome'] = '1087322';
 	$dados_db['dbhost'] = 'localhost';
-	$dados_db['dbuser'] = 'u850975184_sisgerlab';
-	$dados_db['dbsenha'] = 'sisgerlab';
+	$dados_db['dbuser'] = '1087322';
+	$dados_db['dbsenha'] = 'sisgerlab302251';
 }
 
 ?>

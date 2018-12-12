@@ -1,6 +1,8 @@
 <?php
 
-  if (($_SESSION['tipo'] != "Professor") || ($_SESSION['tipo'] != "Administrador")){
+  if (empty($_SESSION['tipo'])){
+    header("Location: home");
+  }elseif ($_SESSION['tipo'] == "Professor") {
     header("Location: home");
   }
 
