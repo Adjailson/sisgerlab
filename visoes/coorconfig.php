@@ -22,7 +22,6 @@
   <tbody>
     <tr>
       <?php
-      $usu = new Usuario();
       $lab = new Laboratorio();
       $res = new Reserva();
       $dados = array();
@@ -32,10 +31,10 @@
         echo '<td>'.$r['id'].'</td>';
         echo '<td>'.$r['data'].'</td>';
         echo '<td>'.$lab->getLab($r['laboratorio']).'</td>';
-        echo '<td>'.$usu->getUsu($r['professor']).'</td>';
+        echo '<td>'.$r['professor'].'</td>';
         echo '<td>'.$res->getStatu($r['id']).'</td>';
         echo '<td>
-          <a href="editres?id='.$r['id'].'" class="btn btn-info">Ativar/Desativar/Cancelar</a> 
+          <a href="editeres?id='.$r['id'].'" class="btn btn-info">Ativar/Desativar/Cancelar</a> 
         </td>';
         echo "</tr>";
         }

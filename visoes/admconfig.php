@@ -24,7 +24,7 @@
       $fun = $_POST["txtFuncao"];
       $cpf = $_POST["txtCpf"];
       $email = $_POST["txtEmail"];
-      $senha = $_POST["txtSenha"];
+      $senha = md5($_POST["txtSenha"]);
       $situ = $_POST["txtSituacao"];
 
       $usu = new Usuario();
@@ -75,7 +75,7 @@
         echo '<td>'.$usu1['situacao'].'</td>';
         echo '<td>
           <a href="deleteusu?id='.$usu1['id'].'" class="btn btn-danger">Excluir</a>
-          <a href="editusu?id='.$usu1['id'].'" class="btn btn-info">Editar</a> 
+          <a href="editeusu?id='.$usu1['id'].'" class="btn btn-info">Editar</a> 
         </td>';
         echo "</tr>";
         }
@@ -194,7 +194,7 @@
           <label for="exampleInputPassword" class="alert-link">Senha</label>
           <input type="password" name="txtSenha" class="form-control" id="exampleInputPassword1" placeholder="Senha" required></div>
 
-          <label class="my-1 mr-2 alert-link">Função</label>
+          <label class="my-1 mr-2 alert-link">Status</label>
           <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="txtSituacao">
             <option selected value="on">On</option>
             <option value="off">Off</option>

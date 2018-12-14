@@ -14,20 +14,20 @@
       isset($_POST["start"]) && !empty($_POST['start'])){
 
       $prof = $_POST['txtProf'];
-      $lab = $_POST['title'];
-      $dataHora = $_POST['start'];
+      $labor = $_POST['title'];
+      $startData = $_POST['start'];
       $status = "#daa520"; // cor escolhida como padrao para reserva em analise
 
       //Converter a data e hora do formato brasileiro para o formato do Banco de Dados
-      $data = explode(" ", $dataHora);
+      $data = explode(" ", $startData);
       list($date, $hora) = $data;
       $data_sem_barra = array_reverse(explode("/", $date));
       $data_sem_barra = implode("-", $data_sem_barra);
-      $dataHora_sem_barra = $data_sem_barra . " " . $hora;
+      $dataBarra = $data_sem_barra . " " . $hora;
 
       $res = new Reserva();
-      $res->setData($dataHora_sem_barra);
-      $res->setLab($lab);
+      $res->setData($dataBarra);
+      $res->setLab($labor);
       $res->setProf($prof);
       $res->setStatus($status);
       $res->cadastrar();
@@ -67,7 +67,8 @@
       select: function(start){
         var horarioformado = "";
         horarioformado += moment(start).format('DD/MM/YYYY ');
-        $('#cadastrar #viewHora').val(moment(start).format('DD/MM/YYYY '));
+        $('#cadastrar #data').val(moment(start).format('DD/MM/YYYY '));
+        $('#cadastrar #viewHora').val(horarioformado + $("#box option:selected").val());
         $('#cadastrar').modal('show');
 
         $("#box").change(function(){
@@ -107,7 +108,7 @@
   function DataHora(evento, objeto){
     var keypress=(window.event)?event.keyCode:evento.which;
     campo = eval (objeto);
-    if (campo.value == '00/00/0000 00:00'){
+    if (campo.value == '00/00/0000 HH:mm'){
       campo.value="";
     }
    
@@ -185,7 +186,6 @@
             <div class="col-sm-10">
               <!--Pegar nome do usuário da sessão-->
               <?php
-              echo "<h5> <spam>" .$_SESSION['nome']."</spam></h5>id";
                echo "<input class='form-control' name='txtProf' type='text' value='" .$_SESSION['nome']."' readonly>";
               ?>
             </div>
@@ -212,7 +212,7 @@
           <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Horário</label>
             <div class="col-sm-10">
-              <select id="box" class="form-control">
+              <select id="box" name="horas" class="form-control">
                 <option value="">Selecione</option>     
                 <option value="07:00" id="hora">07:00 às 08:00 Manhã</option>
                 <option value="08:00" id="hora">08:00 às 09:00 Manhã</option>
@@ -220,15 +220,16 @@
                 <option value="10:00" id="hora">10:00 às 11:00 Manhã</option>
                 <option value="11:00" id="hora">11:00 às 12:00 Manhã</option>
 
-                <option value="12:00" id="hora">13:00 às 14:00 Tarde</option>
+                <option value="13:00" id="hora">13:00 às 14:00 Tarde</option>
                 <option value="14:00" id="hora">14:00 às 15:00 Tarde</option>
                 <option value="15:00" id="hora">15:00 às 16:00 Tarde</option>
-                <option value="16:00" id="hora">17:00 às 18:00 Tarde</option>
+                <option value="16:00" id="hora">16:00 às 17:00 Tarde</option>
 
-                <option value="17:00" id="hora">18:00 às 17:00 Noite</option>
-                <option value="18:00" id="hora">17:00 às 19:00 Noite</option>
-                <option value="19:00" id="hora">20:00 às 21:00 Noite</option>
-                <option value="20:00" id="hora">21:00 às 22:00 Noite</option>
+                <option value="17:00" id="hora">17:00 às 18:00 Noite</option>
+                <option value="18:00" id="hora">18:00 às 19:00 Noite</option>
+                <option value="19:00" id="hora">19:00 às 20:00 Noite</option>
+                <option value="20:00" id="hora">20:00 às 21:00 Noite</option>
+                <option value="21:00" id="hora">21:00 às 22:00 Noite</option>
                 
               </select>
             </div>
@@ -237,10 +238,9 @@
           <hr>
 
           <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Detalhes:</label>
+            <label for="inputEmail3" class="col-sm-2 control-label">Data:</label>
             <div class="col-sm-10">
               <input class="form-control" name="start" type="text" value="" id="viewHora" readonly>
-              <input class="form-control" name="color" id="color" type="text" value="Pendente" readonly>
             </div>
           </div>
 

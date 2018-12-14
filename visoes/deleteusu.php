@@ -17,8 +17,7 @@
 	    $usu->excluir($id);
 	    header("Location: admconfig");
   }
-
-  $fun = new Funcao();
+  
 	$usu = new Usuario();
 	$dados = array();
 	$dados = $usu->listarId($id);
@@ -43,7 +42,7 @@
 
     <div class="col">
       <label for="exampleNome" class="alert-link">Função</label>
-      <?php echo "<input type='text' name='txtNome' class='form-control' value='".$fun->getFun($dados['funcao'])."'' readonly>"; ?>
+      <?php echo "<input type='text' name='txtNome' class='form-control' value='".$dados['funcao']."'' readonly>"; ?>
     </div>
 
 <div class="col">

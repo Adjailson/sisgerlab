@@ -19,31 +19,21 @@
 
     $txtFun = addslashes($_POST["txtOpcao"]);
     $txtNome = addslashes($_POST["txtNome"]);
-    //$txtId = addslashes($_GET['id']);
     $txtEmail = addslashes($_POST['txtEmail']);
     $txtSit = addslashes($_POST["txtSituacao"]);
 
-    /*
-    Verificar se as senhas estão iguais e se box função foi selecionado;
-    Se tudo ok, então insere os dados no banco.
-    */
-	  if($txtOpcao != "0"){
-	    $usu = new Usuario();
-	    $usu->setNome($txtNome);
-	    $usu->setEmail($txtEmail);
-	    $usu->setFuncao($txtFun);
-	    $usu->setSituacao($txtSit);
-	    $usu->editar($id);
-	    
-	    header("Location: admconfig");
-	  }else{
-	    echo "".Utilidades::mensagemErro("Selecione sua função!");
-	    exit();
-	  }
+    $usu = new Usuario();
+    $usu->setNome($txtNome);
+    $usu->setEmail($txtEmail);
+    $usu->setFuncao($txtFun);
+    $usu->setSituacao($txtSit);
+    $usu->editar($id);
+    header("Location: admconfig");
   }
+
 	$usu = new Usuario();
-	$dados2 = array();
-	$dados2 = $usu->listarId($id);
+	$dados = array();
+	$dados = $usu->listarId($id);
 
 ?>
 <div class="card">
@@ -54,32 +44,46 @@
 
 	<label class="my-1 mr-2 alert-link" for="inlineFormCustomSelectPref">Situação</label>
   <select class="custom-select my-1 mr-sm-2" name="txtSituacao">
-      <option value="on">On</option>
-      <option value="off">Off</option>
+      <?php
+        if ($dados['situacao'] == "on") {
+          echo "<option selected value='on'>On</option>";
+          echo "<option value='off'>Off</option>";
+        } else {
+          echo "<option selected value='off'>Off</option>";
+          echo "<option value='on'>On</option>";
+        }
+      ?>
   </select>
 
   <label class="my-1 mr-2 alert-link" for="inlineFormCustomSelectPref">Sua função</label>
   <select class="custom-select my-1 mr-sm-2" name="txtOpcao">
-      <option selected value="0">Selecione</option>
       <?php
-      $func = new Funcao();
-  	  $dados = array();
-  	  $dados = $func->listar();
-      foreach($dados as $row){
-        echo "<option value='".$row['id']."'>".$row['funcao']."</option>";
-      }
+        if ($dados['funcao'] == "Administrador") {
+          echo "<option selected value='Administrador'>Administrador</option>";
+          echo "<option value='Coordenador'>Coordenador</option>";
+          echo "<option value='Professor'>Professor</option>";
+        } elseif($dados['funcao'] == "Coordenador") {
+          echo "<option selected value='Coordenador'>Coordenador</option>";
+          echo "<option value='Administrador'>Administrador</option>";
+          echo "<option value='Professor'>Professor</option>";
+        }else{
+          echo "<option selected value='Professor'>Professor</option>";
+          echo "<option value='Administrador'>Administrador</option>";
+          echo "<option value='Coordenador'>Coordenador</option>";
+        }
+        
       ?>
   </select>
 
   <div class="form-row">
     <div class="col">
       <label for="exampleNome" class="alert-link">Nome</label>
-      <?php echo "<input type='text' name='txtNome' class='form-control' value='".$dados2['nome']."'' required>"; ?>
+      <?php echo "<input type='text' name='txtNome' class='form-control' value='".$dados['nome']."'' required>"; ?>
     </div>
 
     <div class="col">
       <label for="exampleCpf" class="alert-link">CPF</label>
-      <?php echo "<input type='text' maxlength='11' name='txtCpf' class='form-control' value='".$dados2['cpf']."' readonly>"; ?>
+      <?php echo "<input type='text' maxlength='11' name='txtCpf' class='form-control' value='".$dados['cpf']."' readonly>"; ?>
       <small id="emailHelp" class="form-text text-muted">Nós nunca vamos compartilhar seu CPF com mais ninguém.</small>
     </div>
 
@@ -87,7 +91,7 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1" class="alert-link">Endereço de E-mail</label>
-    <?php echo "<input type='email' name='txtEmail' class='form-control' value='".$dados2['email']."' required>"; ?>
+    <?php echo "<input type='email' name='txtEmail' class='form-control' value='".$dados['email']."' required>"; ?>
     <small id="emailHelp" class="form-text text-muted">Nós nunca vamos compartilhar seu e-mail com mais ninguém.</small>
   </div>
   	<a href='admconfig' class='btn btn-danger'>Voltar</a>
