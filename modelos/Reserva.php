@@ -103,8 +103,9 @@ class Reserva extends Conexao{
 		try {
 			$status = "Pendente";
 			$result = array();
-			$sql = "SELECT * FROM reserva WHERE id = $id";
+			$sql = "SELECT * FROM reserva WHERE id = :id";
             $prep = Conexao::getInstance()->prepare($sql);
+            $prep->bindValue(":id", $id);
             $prep->execute();
             $result = $prep->fetch(PDO::FETCH_ASSOC);
             if ($result['status'] == "#daa520") {
@@ -119,11 +120,12 @@ class Reserva extends Conexao{
         }
 	}
 
-	public function listarReservaProf($usuario){
+	public function listarReservaUsu($usuario){
 		try {
 			$result = array();
-			$sql = "SELECT * FROM reserva WHERE professor = '$usuario'";
+			$sql = "SELECT * FROM reserva WHERE professor = :usu";
             $prep = Conexao::getInstance()->prepare($sql);
+            $prep->bindValue(":usu", $usuario);
             $prep->execute();
             $result = $prep->fetchAll(PDO::FETCH_ASSOC);
             return $result;

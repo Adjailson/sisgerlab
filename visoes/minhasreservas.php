@@ -23,7 +23,7 @@ if (empty($_SESSION['nome']) && empty($_SESSION['tipo'])){
       $lab = new Laboratorio();
       $res = new Reserva();
       $dados = array();
-      $dados = $res->listarReservaProf($_SESSION['nome']);
+      $dados = $res->listarReservaUsu($_SESSION['nome']);
       foreach ($dados as $r) {
         echo '<tr>';
         echo '<td>'.$r['id'].'</td>';

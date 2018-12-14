@@ -1,4 +1,8 @@
 
+<?php
+ echo "Nome ".$_SESSION['nome']. " tipo ".$_SESSION['tipo']." id ".$_SESSION['id'];
+?>
+
 <h2>Sobre <span class="badge badge-secondary">Sisgerlab</span></h2>
 
 <div class="card">

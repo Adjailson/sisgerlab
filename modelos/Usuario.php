@@ -120,8 +120,9 @@ class Usuario extends Conexao{
 	public function listarId($id){
 		try {
 			$dados = array();
-			$sql = "SELECT * FROM usuario WHERE id = $id";
+			$sql = "SELECT * FROM usuario WHERE id = :id";
             $prep = Conexao::getInstance()->prepare($sql);
+            $prep->bindValue(":id", $id);
             $prep->execute();
             $dados = $prep->fetch(PDO::FETCH_ASSOC);
             return $dados;

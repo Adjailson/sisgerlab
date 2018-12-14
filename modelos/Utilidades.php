@@ -54,6 +54,17 @@ class Utilidades {
                   <a class='dropdown-item' href='sair'>Sair</a>
                 </div>
               </div>";
+        } elseif ($_SESSION['tipo'] == "Professor") {
+            echo "<div class='btn-group'>
+                <button class='btn btn-secondary btn-lg dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                  Menu
+                </button>
+                <div class='dropdown-menu'>
+                  <a class='dropdown-item' href='minhasreservas'>Minhas reservas</a>
+                  <div class='dropdown-divider'></div>
+                  <a class='dropdown-item' href='sair'>Sair</a>
+                </div>
+              </div>";
         } elseif (empty($_SESSION['nome']) && empty($_SESSION['tipo'])){
             echo "<a class='btn btn-outline-success my-2 my-sm-0' href='login'>Login <span class='sr-only'></span></a>
             <a class='btn btn-outline-success my-2 my-sm-0' href='cadastro'>Cadastro <span class='sr-only'></span></a>";

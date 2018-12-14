@@ -14,15 +14,15 @@ if (isset($_POST['txtEmail']) && !empty($_POST['txtEmail']) && isset($_POST['txt
   $dados = $usu->login($email, $senha);
   $tipo = $dados['funcao'];
   $nome = $dados['nome'];
+  $id = $dados['id'];
   $situacao = $dados['situacao'];
-
 
   if ((!empty($tipo)) && (!empty($nome))) {
     if ($situacao == "on") {
       // Guarda na sessao nome e a funcao desse usuário
       $_SESSION["nome"] = $nome;
       $_SESSION['tipo'] = $tipo;
-      $_SESSION['id'] = $dados['id'];
+      $_SESSION['id'] = $id;
       header("Location: home");
     } else {
       echo "".Utilidades::mensagemErro("Acesso não confirmado!");
@@ -50,7 +50,7 @@ if (isset($_POST['txtEmail']) && !empty($_POST['txtEmail']) && isset($_POST['txt
     <label for="exampleInputPassword" class="alert-link">Senha</label>
     <input type="password" class="form-control" name="txtSenha" id="exampleInputPassword1" placeholder="Senha" required>   
     <small id="emailHelp" class="form-text text-muted">Não tem Cadastro? Acesse: <a href="cadastro">Cadastro</a></small>
-    <small id="emailHelp" class="form-text text-muted">Não lembra a senha? Acesse: <a href="recuperar">Esqueci a senha</a></small>
+    <small id="emailHelp" class="form-text text-muted">Não lembra a senha? Acesse: <a href="contato">Esqueci a senha</a></small>
     
   </div>
     <button type="submit" class="btn btn-primary">Logar</button>
