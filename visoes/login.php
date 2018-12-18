@@ -37,10 +37,10 @@ if (isset($_POST['txtEmail']) && !empty($_POST['txtEmail']) && isset($_POST['txt
 }
 ?>
 
-<div class="card">
-<div class="card-header">
+
+<form method="POST" action="login" class="formpersonal">
   <h2>Login</h2>
-<form method="POST" action="login">
+  <hr>
   <div class="form-group">
     <label for="exampleInputEmail1" class="alert-link">Endereço de E-mail</label>
     <input type="email" class="form-control" name="txtEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail" required autofocus>
@@ -55,5 +55,6 @@ if (isset($_POST['txtEmail']) && !empty($_POST['txtEmail']) && isset($_POST['txt
   </div>
     <button type="submit" class="btn btn-primary">Logar</button>
 </form>
-</div>
-</div>
+
+
+

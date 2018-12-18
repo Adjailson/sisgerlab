@@ -1,2 +1,22 @@
 @charset "UTF-8";
 
+/*===========================================*/
+/*            form centralizado              */
+/*===========================================*/
+.formpersonal{ 
+    width: 300px; 
+    height: 300px; 
+    left: 55%; 
+    margin: -100px 0px 150px -210px; 
+    padding:10px;
+    position: relative;
+    top: 100px;
+}
+
+@media all and (max-width: 400px){
+	.formpersonal{
+	    left: 65%;
+	}
+}
+/*===========================================*/
+

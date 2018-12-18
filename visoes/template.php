@@ -25,6 +25,7 @@
   <title>Sisgerlab</title>
 
   <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>assets/css/sisgerlab.css">
   
   <script type="text/javascript" src="<?php echo BASE_URL ?>assets/js/jquery.min.js"></script>
   <script type="text/javascript" src="<?php echo BASE_URL ?>assets/js/bootstrap.js"></script>
