@@ -42,6 +42,10 @@
 <script src="<?php echo BASE_URL ?>assets/locale/pt-br.js"></script>
 <script>
 
+  var now = new Date();
+  var valorData = 0;
+  valorDataHoje = parseInt(now.getFullYear()+""+(now.getMonth()+1)+""+now.getDate());
+
   $(document).ready(function() {
     $('#calendar').fullCalendar({
       header: {
@@ -65,15 +69,24 @@
       selectable:'<?php echo Utilidades::isLogado();?>', // bloquear ou desbloquear o calendario se o usuário logado.
       selectHelper: true,
       select: function(start){
+
         var horarioformado = "";
         horarioformado += moment(start).format('DD/MM/YYYY ');
-        $('#cadastrar #data').val(moment(start).format('DD/MM/YYYY '));
-        $('#cadastrar #viewHora').val(horarioformado + $("#box option:selected").val());
-        $('#cadastrar').modal('show');
 
-        $("#box").change(function(){
+        // Verificar data passada com data de hoje
+        var valorDataSelecionada = 0;
+        valorDataSelecionada = parseInt(moment(start).format('YYYYMMDD'));
+        if (valorDataSelecionada >= valorDataHoje) {
+  
+          $('#cadastrar #data').val(moment(start).format('DD/MM/YYYY '));
           $('#cadastrar #viewHora').val(horarioformado + $("#box option:selected").val());
-        });
+          $('#cadastrar').modal('show');
+          $("#box").change(function(){
+            $('#cadastrar #viewHora').val(horarioformado + $("#box option:selected").val());
+          });
+        }else{
+          alert("Data já passou.");
+        }
       },
       
       events: [

@@ -79,5 +79,22 @@ class Utilidades {
             return "<a href='cadastro' class='btn btn-primary btn-lg'>Solicitar Acesso</a>";
         }
     }
+
+    public static function enviarEmail($nome, $email, $mensagem){
+      try {
+        $para = "sisgerlabupe@gmail.com";
+        $assunto = "MENSAGEM DO WEBSITE";
+        $corpo = "Nome: ".$nome."\r\nE-mail: ".$email."\r\nMensagem:\r\n".$mensagem;
+        $cabecalho = "From: sisgerlabupe@gmail.com\r\n".
+            "Reply-To: ".$email."\r\n".
+            "X-Mailer: ".phpversion();
+        mail($para, $assunto, $corpo, $cabecalho);
+        echo "".Utilidades::mensagemOk("Enviado com sucesso!");
+        exit();
+      } catch (Exception $e) {
+        echo "".Utilidades::mensagemErro("Erro ao enviar!");
+        exit();
+      }
+    }
 }
 ?>
