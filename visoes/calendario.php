@@ -26,7 +26,7 @@
       $dataBarra = $data_sem_barra . " " . $hora;
 
       $res = new Reserva();
-      $res->setData($dataBarra);
+      $res->setData($dataBarra." ".$labor);// permitir horarios iguais em locais diferente
       $res->setLab($labor);
       $res->setProf($prof);
       $res->setStatus($status);
@@ -63,13 +63,12 @@
         $('#visualizar #start').text(event.start.format('DD/MM/YYYY HH:mm'));
         $('#visualizar').modal('show');
         return false;
-
       },
       
       selectable:'<?php echo Utilidades::isLogado();?>', // bloquear ou desbloquear o calendario se o usuário logado.
       selectHelper: true,
       select: function(start){
-
+        //document.write($('.fc-past').hasClass('fc-sun'));
         var horarioformado = "";
         horarioformado += moment(start).format('DD/MM/YYYY ');
 
@@ -78,12 +77,17 @@
         valorDataSelecionada = parseInt(moment(start).format('YYYYMMDD'));
         if (valorDataSelecionada >= valorDataHoje) {
   
+          //if ($('.all-day').hasClass('fc-sun') == false) {
+
           $('#cadastrar #data').val(moment(start).format('DD/MM/YYYY '));
           $('#cadastrar #viewHora').val(horarioformado + $("#box option:selected").val());
           $('#cadastrar').modal('show');
           $("#box").change(function(){
             $('#cadastrar #viewHora').val(horarioformado + $("#box option:selected").val());
           });
+
+          //}
+
         }else{
           alert("Data já passou.");
         }
@@ -102,7 +106,7 @@
             {
             id: '<?php echo $row['id']; ?>',
             title: '<?php echo $lab->getLab($row['laboratorio']); ?>',
-            start: '<?php echo $row['data']; ?>',
+            start: '<?php echo substr($row['data'],0,16); ?>',
             color: '<?php echo $row['status']; ?>'
             },<?php
           }
@@ -111,11 +115,14 @@
           start: '2018-12-25',
           overlap: false,
           rendering: 'background',
-          color: '#ff4500'
+          color: '#ff0000'
         }
-      ]
+      ],
+      timeFormat: 'H:mm'
     });
-  });
+  
+});
+
 
   //Mascara para o campo data e hora
   function DataHora(evento, objeto){
@@ -153,11 +160,13 @@
 </script>
 <header class="fc-header">
   <div class="container">       
-        <span class="btn btn-success"></span> Reserva confirmada
-        <span class="btn btn-warning"></span> Reserva Pendente
-        <span class="btn btn-danger"></span> Reserva Cancelada
+        <span class="btn btn-success"></span> Confirmada
+        <span class="btn btn-warning"></span> Pendente
+        <span class="btn btn-danger"></span> Cancelada
+        <span class="btn" style="background: #FFAEB9;"></span> Feriados
 
     <div id='calendar'></div>
+    <hr>
   </div>
 
 <!--Modal para visualizar os detalhes já cadastrados-->

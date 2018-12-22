@@ -96,11 +96,11 @@ class Laboratorio extends Conexao{
 	public function getLab($id){
 		try {
 			$result = array();
-			$sql = "SELECT nome FROM laboratorio WHERE id = $id";
+			$sql = "SELECT nome, local FROM laboratorio WHERE id = $id";
             $prep = Conexao::getInstance()->prepare($sql);
             $prep->execute();
             $result = $prep->fetch(PDO::FETCH_ASSOC);
-            return $result['nome'];
+            return $result['nome']." - ".$result['local'];
         } catch (Exception $erro) {
         }
 	}

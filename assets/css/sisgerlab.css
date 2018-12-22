@@ -1,5 +1,23 @@
 @charset "UTF-8";
 
+
+.fc-sun{
+    /*background: #FFAEB9;*/
+    color: #B22222;
+    font-weight: bold;
+}
+
+.fc-sat{
+    /*background: #1C86EE;*/
+    color: #0000CD;
+    font-weight: bold;
+}
+
+.fc-day-header{
+    background: #B5B5B5;
+}
+
+
 /*===========================================*/
 /*            form centralizado              */
 /*===========================================*/
