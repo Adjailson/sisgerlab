@@ -14,7 +14,7 @@ if(ACESSO_DB == "desenvolvedor"){
 	$dados_db['dbnome'] = '1087322';
 	$dados_db['dbhost'] = 'localhost';
 	$dados_db['dbuser'] = '1087322';
-	$dados_db['dbsenha'] = 'sisgerlab302251';
+	$dados_db['dbsenha'] = '************';
 }
 
 ?>
